@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary: #ff0066;
+    --secondary: #00ffcc;
+    --dark: #0f0f1a;
+    --darker: #07070e;
+    --light: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--darker);
+    color: var(--light);
+    overflow: hidden; 
+    line-height: 1.6;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1; 
+}
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none; 
+}
+
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px; 
+    padding: 20px;
+    text-align: center;
+}
+
+#intro-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; 
+}
+
+#donation-page {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 5; 
+    width: 100%; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#donation-page.visible {
+    visibility: visible;
+}
+
+header {
+    padding: 20px 0;
+}
+
+.logo-container {
+    width: 200px;
+    margin: 0 auto;
+}
+
+#logo, #logo-donation {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 5px var(--primary));
+}
+
+.donation-content {
+    position: relative; 
+    background: linear-gradient(135deg, rgba(25, 25, 50, 0.9), rgba(15, 15, 30, 0.9));
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 20px;
+    border: 1px solid rgba(255, 0, 102, 0.2);
+    box-shadow: 0 0 20px rgba(255, 0, 102, 0.3);
+}
+
+.donation-content h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.donation-content p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 15px;
+}
+
+.pix-key-container {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: rgba(255, 0, 102, 0.1);
+    border-radius: 5px;
+    border: 1px dashed var(--primary);
+}
+
+.pix-key-container p {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--secondary);
+    margin-bottom: 10px;
+}
+
+#pix-key {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--light);
+    word-break: break-all; 
+    margin-bottom: 20px;
+}
+
+.pulse-btn {
+    background-color: var(--primary);
+    color: var(--light);
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 0, 102, 0.5);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.pulse-btn:hover {
+    background-color: rgba(255, 0, 102, 0.8);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 0, 102, 0.7);
+}
+
+.pulse-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.6s;
+}
+
+.pulse-btn:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: none; 
+}
+
+.thank-you {
+    margin-top: 20px;
+    font-style: italic;
+    color: var(--secondary);
+}
+
+.hidden {
+    display: none;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; 
+    right: 15px; 
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5); 
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: var(--primary); 
+}
+
+@media (max-width: 600px) {
+    .donation-content {
+        padding: 20px;
+    }
+
+    .donation-content h2 {
+        font-size: 1.5em;
+    }
+
+    #pix-key {
+        font-size: 1em;
+    }
+
+    .pulse-btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .logo-container {
+        width: 150px;
+    }
+
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 1em;
+    }
+}

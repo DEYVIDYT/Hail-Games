@@ -1,0 +1,80 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HailGames - Doação</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.157.0/build/three.module.js",
+                "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.2/index.js"
+            }
+        }
+    </script>
+    <script src="script.js" type="module" defer></script>
+</head>
+<body>
+    <!-- Container do Canvas de Fundo -->
+    <div id="canvas-container"></div>
+
+    <div class="container">
+        <!-- Área de Animação Inicial do Logo -->
+        <div id="intro-logo" class="centered-content">
+            <header>
+                <div class="logo-container">
+                    <svg id="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="2" result="blur"/>
+                                <feFlood flood-color="#ff0066" flood-opacity="0.5" result="color"/>
+                                <feComposite in="color" in2="blur" operator="in" result="glow"/>
+                                <feMerge>
+                                    <feMergeNode in="glow"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <text x="20" y="40" fill="#ffffff" font-family="'Orbitron', sans-serif" font-size="30" font-weight="bold" filter="url(#glow)">HAIL<tspan fill="#ff0066">GAMES</tspan></text>
+                    </svg>
+                </div>
+            </header>
+        </div>
+
+        <!-- Área da Página de Doação (Inicialmente escondida) -->
+        <div id="donation-page" class="centered-content hidden">
+            <header>
+                <div class="logo-container">
+                    <svg id="logo-donation" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <filter id="glow-donation" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="2" result="blur"/>
+                                <feFlood flood-color="#ff0066" flood-opacity="0.5" result="color"/>
+                                <feComposite in="color" in2="blur" operator="in" result="glow"/>
+                                <feMerge>
+                                    <feMergeNode in="glow"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </feGaussianBlur>
+                        </defs>
+                        <text x="20" y="40" fill="#ffffff" font-family="'Orbitron', sans-serif" font-size="30" font-weight="bold" filter="url(#glow-donation)">HAIL<tspan fill="#ff0066">GAMES</tspan></text>
+                    </svg>
+                </div>
+            </header>
+            <main class="donation-content">
+                <button id="close-donation" class="close-btn">X</button>
+                <h2>Apoie o canal</h2>
+                <p>Se você gostou do conteúdo você poderá apoiar com o pix</p>
+                <div class="pix-key-container">
+                    <p>Nossa Chave Pix:</p>
+                    <div id="pix-key">
+                        7789f18e-3562-421e-b98b-688c7b402039
+                    </div>
+                    <button id="copy-pix" class="pulse-btn">Copiar Chave</button>
+                </div>
+                <p class="thank-you">Obrigado pelo seu apoio!</p>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
